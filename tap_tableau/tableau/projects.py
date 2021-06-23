@@ -1,5 +1,6 @@
 from .permissions import get_permission_details
 
+
 def get_project_details(project, server, authentication):
     with server.auth.sign_in(authentication):
         return {
@@ -41,7 +42,7 @@ def get_all_projects(
 def get_all_project_details(server, authentication):
     projects = []
     with server.auth.sign_in(authentication):
-        all_projects = get_all_projects(server=server)
+        all_projects = get_all_projects(server=server, authentication=authentication)
         for project in all_projects:
-            projects.append(get_project_details(project=project, server=server))
+            projects.append(get_project_details(project=project, server=server, authentication=authentication))
     return projects

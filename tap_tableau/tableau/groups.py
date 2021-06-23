@@ -23,7 +23,6 @@ def get_all_groups(server):
 def get_all_group_details(server, authentication):
     groups = []
     users = []
-    groups_users = []
     if not server.is_signed_in():
         server.auth.sign_in(authentication)
     all_groups = get_all_groups(server=server)
@@ -33,11 +32,9 @@ def get_all_group_details(server, authentication):
         for user in group.users:
             if user.id not in set(user['id'] for user in users):
                 users.append(get_user_details(user=user))
-            groups_users.append({'group_id': group.id, 'user_id': user.id})
         group_details.pop('users')
     server.auth.sign_out()
     return {
         'groups': groups,
         'users': users,
-        'groups_users': groups_users
     }

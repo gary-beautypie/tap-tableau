@@ -1,0 +1,44 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "properties": {
+    "domain_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "license_mode": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "minimum_site_role": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "tag_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}

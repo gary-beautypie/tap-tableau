@@ -4,7 +4,6 @@ import json
 import collections
 import time
 
-import requests
 import singer
 import singer.bookmarks as bookmarks
 import singer.metrics as metrics
@@ -12,14 +11,25 @@ from singer import metadata
 import tableauserverclient as TSC
 
 from .tableau.datasources import get_all_datasource_details
+from .tableau.groups import get_all_group_details
+from .tableau.projects import get_all_project_details
+from .tableau.schedules import get_all_schedule_details
+from .tableau.tasks import get_all_task_details
+from .tableau.workbooks import get_all_workbook_details
 
-session = requests.Session()
+
 logger = singer.get_logger()
 
 REQUIRED_CONFIG_KEYS = ['host']
 KEY_PROPERTIES = {
     'connections': ['id'],
-    'datasources': ['id']
+    'datasources': ['id'],
+    'groups': ['id'],
+    'projects': ['id'],
+    'schedules': ['id'],
+    'tasks': ['id'],
+    'users': ['id'],
+    'workbooks': ['id']
 }
 
 
@@ -40,12 +50,83 @@ def get_all_datasources(schema, server, authentication, state, mdata):
     return state
 
 
+def get_all_groups(schema, server, authentication, state, mdata):
+    with metrics.record_counter('groups') as counter:
+        extraction_time = singer.utils.now()
+        group_details = get_all_group_details(server=server, authentication=authentication)
+        for group in group_details['groups']:
+            with singer.Transformer() as transformer:
+                rec = transformer.transform(group, schema, metadata=metadata.to_map(mdata))
+            singer.write_record('groups', rec, time_extracted=extraction_time)
+            counter.increment()
+            if schema.get('users'):
+                for user in group_details['users']:
+                    with singer.Transformer() as transformer:
+                        rec = transformer.transform(user, schema, metadata=metadata.to_map(mdata))
+                    singer.write_record('users', rec, time_extracted=extraction_time)
+    return state
+
+
+def get_all_projects(schema, server, authentication, state, mdata):
+    with metrics.record_counter('projects') as counter:
+        extraction_time = singer.utils.now()
+        project_details = get_all_project_details(server=server, authentication=authentication)
+        for project in project_details:
+            with singer.Transformer() as transformer:
+                rec = transformer.transform(project, schema, metadata=metadata.to_map(mdata))
+            singer.write_record('projects', rec, time_extracted=extraction_time)
+            counter.increment()
+    return state
+
+
+def get_all_schedules(schema, server, authentication, state, mdata):
+    with metrics.record_counter('schedules') as counter:
+        extraction_time = singer.utils.now()
+        schedule_details = get_all_schedule_details(server=server, authentication=authentication)
+        for schedule in schedule_details:
+            with singer.Transformer() as transformer:
+                rec = transformer.transform(schedule, schema, metadata=metadata.to_map(mdata))
+            singer.write_record('schedules', rec, time_extracted=extraction_time)
+            counter.increment()
+    return state
+
+
+def get_all_tasks(schema, server, authentication, state, mdata):
+    with metrics.record_counter('tasks') as counter:
+        extraction_time = singer.utils.now()
+        task_details = get_all_task_details(server=server, authentication=authentication)
+        for task in task_details:
+            with singer.Transformer() as transformer:
+                rec = transformer.transform(task, schema, metadata=metadata.to_map(mdata))
+            singer.write_record('tasks', rec, time_extracted=extraction_time)
+            counter.increment()
+    return state
+
+
+def get_all_workbooks(schema, server, authentication, state, mdata):
+    with metrics.record_counter('workbooks') as counter:
+        extraction_time = singer.utils.now()
+        workbook_details = get_all_workbook_details(server=server, authentication=authentication)
+        for workbook in workbook_details['workbooks']:
+            with singer.Transformer() as transformer:
+                rec = transformer.transform(workbook, schema, metadata=metadata.to_map(mdata))
+            singer.write_record('workbooks', rec, time_extracted=extraction_time)
+            counter.increment()
+    return state
+
+
 SYNC_FUNCTIONS = {
-    'datasources': get_all_datasources
+    'datasources': get_all_datasources,
+    'groups': get_all_groups,
+    'projects': get_all_projects,
+    'schedules': get_all_schedules,
+    'tasks': get_all_tasks,
+    'workbooks': get_all_workbooks
 }
 
 SUB_STREAMS = {
-    'datasources': ['connections']
+    'datasources': ['connections'],
+    'groups': ['users']  ## should users be a sub-stream of groups?
 }
 
 
@@ -135,6 +216,7 @@ def do_sync(config, state, catalog):
         raise ValueError("Must specify username/ password or token_name/ token for authentication")
     server = TSC.Server(config['host'], use_server_version=True)
 
+    start_date = config['start_date'] if 'start_date' in config else None
     # selected_stream_ids = get_selected_streams(catalog)
     # print(selected_stream_ids)
     for stream in catalog['streams']:
@@ -152,7 +234,6 @@ def do_sync(config, state, catalog):
         else:
             stream_schemas = {stream_id: stream_schema}
 
-            # get and write selected sub stream schemas
             for sub_stream_id in sub_stream_ids:
                 # if sub_stream_id in selected_stream_ids:
                     sub_stream = get_stream_from_catalog(sub_stream_id, catalog)

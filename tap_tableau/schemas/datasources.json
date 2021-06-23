@@ -89,6 +89,18 @@
         "string"
       ]
     },
+    "tags": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+        "type": [
+          "null",
+          "string"
+        ]
+      }
+    },
     "updated_at": {
       "type": [
         "null",

@@ -37,7 +37,6 @@ def get_all_datasources(server):
 def get_all_datasource_details(server, authentication):
     connections = []
     datasources = []
-    # datasource_connections = []
     if not server.is_signed_in():
         server.auth.sign_in(authentication)
     all_datasources = get_all_datasources(server=server)
@@ -45,10 +44,8 @@ def get_all_datasource_details(server, authentication):
         datasources.append(get_datasource_details(datasource=datasource))
         for connection in datasource.connections:
             connections.append(get_connection_details(connection=connection))
-            # datasource_connections.append({'datasource_id': datasource.id, 'connection_id': connection.id})
     server.auth.sign_out()
     return {
         'datasources': datasources,
-        # 'connections': connections,
-        # 'datasource_connections': datasource_connections
+        'connections': connections,
     }

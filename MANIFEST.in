@@ -1,0 +1,3 @@
+include LICENSE
+include tap_tableau/schemas/*.json
+include tap_tableau/tableau/*.py

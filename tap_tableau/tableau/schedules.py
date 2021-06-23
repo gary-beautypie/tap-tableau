@@ -1,17 +1,19 @@
+from .utils import format_datetime
+
 
 def get_schedule_details(schedule):
     return {
-        'created_at': schedule.created_at,
-        'end_schedule_at': schedule.end_schedule_at,
+        'created_at': format_datetime(schedule.created_at),
+        'end_schedule_at': format_datetime(schedule.end_schedule_at),
         'execution_order': schedule.execution_order,
         'id': schedule.id,
         'interval_item': schedule.interval_item,
         'name': schedule.name,
-        'next_run_at': schedule.next_run_at,
+        'next_run_at': format_datetime(schedule.next_run_at),
         'priority': schedule.priority,
         'schedule_type': schedule.schedule_type,
         'state': schedule.state,
-        'updated_at': schedule.updated_at,
+        'updated_at': format_datetime(schedule.updated_at),
     }
 
 

@@ -1,0 +1,112 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "properties": {
+    "content_permissions": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "default_datasource_permissions": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+
+      }
+    },
+    "default_flow_permissions": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+        "properties": {
+          "capabilities": {
+            "type": [
+              "null",
+              "array"
+            ],
+            "items": {
+              "properties": {
+                "Read": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                },
+                "Write": {
+                  "type": [
+                    "null",
+                    "string"
+                  ]
+                }
+              }
+            }
+          },
+          "grantee_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "grantee_tag_name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "default_workbook_permissions": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+
+      }
+    },
+    "description": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "is_default": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "owner_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "parent_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}

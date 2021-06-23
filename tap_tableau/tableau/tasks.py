@@ -1,3 +1,6 @@
+from .utils import format_datetime
+
+
 def get_target_details(target):
     return {
         'id': target.id,
@@ -9,7 +12,7 @@ def get_task_details(task):
     return {
         'consecutive_failed_count': task.consecutive_failed_count,
         'id': task.id,
-        'last_run_at': task.last_run_at,
+        'last_run_at': format_datetime(task.last_run_at),
         'priority': task.priority,
         'schedule_id': task.schedule_id,
         'target': get_target_details(target=task.target),

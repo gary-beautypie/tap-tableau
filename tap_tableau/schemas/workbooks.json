@@ -1,0 +1,192 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "properties": {
+    "content_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "data_acceleration_config": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "acceleration_enabled": {
+          "type": [
+            "null",
+            "boolean"
+          ]
+        }
+      }
+    },
+    "description": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "owner_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "permissions": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+        "properties": {
+          "capabilities": {
+            "type": [
+              "null",
+              "object"
+            ],
+            "properties": {
+              "AddComment": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ExportData": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ExportImage": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "Filter": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "Read": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ShareView": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ViewComments": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "ViewUnderlyingData": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              },
+              "Write": {
+                "type": [
+                  "null",
+                  "string"
+                ]
+              }
+            }
+          },
+          "grantee_id": {
+            "type": [
+              "null",
+              "string"
+            ]
+          },
+          "grantee_tag_name": {
+            "type": [
+              "null",
+              "string"
+            ]
+          }
+        }
+      }
+    },
+    "project_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "project_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "show_tabs": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "size": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "tags": {
+      "type": [
+        "null",
+        "array"
+      ],
+      "items": {
+        "type": [
+          "null",
+          "string"
+        ]
+      }
+    },
+    "updated_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "webpage_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}

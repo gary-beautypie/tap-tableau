@@ -1,0 +1,65 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "properties": {
+    "consecutive_failed_count": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "last_run_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "priority": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "schedule_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "target": {
+      "type": [
+        "null",
+        "object"
+      ],
+      "properties": {
+        "id": {
+          "type": [
+            "null",
+            "string"
+          ]
+        },
+        "type": {
+          "type": [
+            "null",
+            "string"
+          ]
+        }
+      }
+    },
+    "task_type": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}
