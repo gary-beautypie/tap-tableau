@@ -1,0 +1,56 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "properties": {
+    "connection_type": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "datasource_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "datasource_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "embed_password": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "server_address": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "server_port": {
+      "type": [
+        "null",
+        "integer"
+      ]
+    },
+    "username": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}

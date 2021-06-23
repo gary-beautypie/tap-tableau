@@ -1,0 +1,112 @@
+{
+  "type": [
+    "null",
+    "object"
+  ],
+  "properties": {
+    "ask_data_enablement": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "certification_note": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "certified": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "content_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "created_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "datasource_type": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "description": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "encrypt_extracts": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "has_extracts": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "owner_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "project_id": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "project_name": {
+      "type": [
+        "null",
+        "string"
+      ]
+    },
+    "updated_at": {
+      "type": [
+        "null",
+        "string"
+      ],
+      "format": "date-time"
+    },
+    "use_remote_query_agent": {
+      "type": [
+        "null",
+        "boolean"
+      ]
+    },
+    "webpage_url": {
+      "type": [
+        "null",
+        "string"
+      ]
+    }
+  }
+}
