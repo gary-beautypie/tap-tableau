@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name='tap-tableau',
-    version='0.0.4',
+    version='0.0.5',
     description='Singer tap for extracting data from the Tableau API',
     long_description=(pathlib.Path(__file__).parent / "README.md").read_text(),
     long_description_content_type="text/markdown",

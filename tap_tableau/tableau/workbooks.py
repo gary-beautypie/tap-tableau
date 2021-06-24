@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from .connections import get_connection_details
 from .permissions import get_permission_details
 from .utils import format_datetime
@@ -50,11 +52,12 @@ def get_workbook_details(workbook):
 
 def get_all_workbooks(server_client, start_date):
     start_date_filter = get_start_date_filter(start_date=start_date)
-    all_workbooks, _ = server_client.workbooks.get(start_date_filter)
-    for workbook in all_workbooks:
+    all_workbooks = []
+    for workbook in TSC.Pager(server_client.workbooks, start_date_filter):
         server_client.workbooks.populate_connections(workbook)
         server_client.workbooks.populate_permissions(workbook)
         server_client.workbooks.populate_views(workbook)
+        all_workbooks.append(workbook)
     return all_workbooks
 
 

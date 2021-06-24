@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from .utils import format_datetime
 
 
@@ -21,7 +23,9 @@ def get_task_details(task):
 
 
 def get_all_tasks(server_client):
-    all_tasks, _ = server_client.tasks.get()
+    all_tasks = []
+    for task in TSC.Pager(server_client.tasks):
+        all_tasks.append(task)
     return all_tasks
 
 

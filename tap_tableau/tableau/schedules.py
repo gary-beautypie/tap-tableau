@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from .utils import format_datetime
 
 
@@ -18,7 +20,9 @@ def get_schedule_details(schedule):
 
 
 def get_all_schedules(server_client):
-    all_schedules, _ = server_client.schedules.get()
+    all_schedules =[]
+    for schedule in TSC.Pager(server_client.schedules):
+        all_schedules.append(schedule)
     return all_schedules
 
 

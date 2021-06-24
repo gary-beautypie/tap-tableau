@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from .permissions import get_permission_details
 
 
@@ -17,12 +19,13 @@ def get_project_details(project):
 
 
 def get_all_projects(server_client):
-    all_projects, _ = server_client.projects.get()
-    for project in all_projects:
+    all_projects = []
+    for project in TSC.Pager(server_client.projects):
         server_client.projects.populate_permissions(project)
         server_client.projects.populate_datasource_default_permissions(project)
         server_client.projects.populate_flow_default_permissions(project)
         server_client.projects.populate_workbook_default_permissions(project)
+        all_projects.append(project)
     return all_projects
 
 

@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from .connections import get_connection_details
 from .permissions import get_permission_details
 from .utils import format_datetime
@@ -30,10 +32,11 @@ def get_datasource_details(datasource):
 
 def get_all_datasources(server_client, start_date):
     start_date_filter = get_start_date_filter(start_date=start_date)
-    all_datasources, _ = server_client.datasources.get(start_date_filter)
-    for datasource in all_datasources:
+    all_datasources = []
+    for datasource in TSC.Pager(server_client.datasources, start_date_filter):
         server_client.datasources.populate_connections(datasource)
         server_client.datasources.populate_permissions(datasource)
+        all_datasources.append(datasource)
     return all_datasources
 
 

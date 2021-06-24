@@ -1,3 +1,5 @@
+import tableauserverclient as TSC
+
 from .users import get_user_details
 
 
@@ -14,9 +16,10 @@ def get_group_details(group):
 
 
 def get_all_groups(server_client):
-    all_groups, _ = server_client.groups.get()
-    for group in all_groups:
+    all_groups = []
+    for group in TSC.Pager(server_client.groups):
         server_client.groups.populate_users(group)
+        all_groups.append(group)
     return all_groups
 
 
