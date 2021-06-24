@@ -1,6 +1,7 @@
 from .connections import get_connection_details
 from .permissions import get_permission_details
 from .utils import format_datetime
+from .utils import get_start_date_filter
 
 
 def get_view_details(view):
@@ -47,8 +48,9 @@ def get_workbook_details(workbook):
     }
 
 
-def get_all_workbooks(server):
-    all_workbooks, _ = server.workbooks.get()
+def get_all_workbooks(server, start_date):
+    filter = get_start_date_filter(start_date=start_date)
+    all_workbooks, _ = server.workbooks.get(filter)
     for workbook in all_workbooks:
         server.workbooks.populate_connections(workbook)
         server.workbooks.populate_permissions(workbook)
@@ -56,12 +58,12 @@ def get_all_workbooks(server):
     return all_workbooks
 
 
-def get_all_workbook_details(server, authentication):
+def get_all_workbook_details(server, authentication, start_date):
     workbooks = []
     connections = []
     if not server.is_signed_in():
         server.auth.sign_in(authentication)
-    all_workbooks = get_all_workbooks(server=server)
+    all_workbooks = get_all_workbooks(server=server, start_date=start_date)
     for workbook in all_workbooks:
         workbooks.append(get_workbook_details(workbook=workbook))
         for connection in workbook.connections:

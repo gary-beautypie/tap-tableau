@@ -1,7 +1,20 @@
 # tap-tableau
 
-This is a [Singer](https://singer.io) tap that produces JSON-formatted data from the Tableau REST API following the [Singer
+This is a [Singer](https://singer.io) tap that produces JSON-formatted data from the [Tableau REST API](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm) following the [Singer
 spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).  
+Although it currently relies on this API, the intention will be to move over to the [Metadata API](https://help.tableau.com/current/api/metadata_api/en-us/index.html).  
+
+| Stream | Replication Key | Replication Strategy |
+|:---:|:---:|:---:|
+| Connections | id | FULL |
+| Datasources | id | INCREMENTAL |
+| Groups | id | FULL |
+| Permissions | id | FULL |
+| Projects | id | FULL |
+| Schedules | id | FULL |
+| Tasks | id | FULL |
+| Users | id | FULL |
+| Workbooks | id | INCREMENTAL |
 
 
 ## Quick start
@@ -14,7 +27,8 @@ spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).
     > pip install tap-tableau
     ```
 
-2. Create the config file 
+2. Create the config file, either (`token`, `token_name`) or (`username`, `password`) must
+ be specified for authentication.
 
     ```json
     {
@@ -26,7 +40,7 @@ spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).
    }
     ```
 
-3. Run the tap in discovery mode to get properties.json file
+3. Run discovery to generate the catalog
 
     ```bash
     tap-tableau --config config.json --discover > catalog.json
@@ -34,13 +48,13 @@ spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).
 
 4. In the catalog.json file, select the streams to sync
 
-    Each stream in the properties.json file has a "schema" entry.  To select a stream to sync, add `"selected": true` to that stream's "schema" entry.  For example, to sync the pull_requests stream:
+    Each stream in the catalog.json file has a "schema" entry.  To select a stream to sync, add `"selected": true` to that stream's "schema" entry.  For example, to sync the datasources stream:
     ```
     ...
     "tap_stream_id": "datasources",
     "schema": {
       "selected": true,
-      "properties": {
+      "schema": {
         "updated_at": {
           "format": "date-time",
           "type": [
@@ -57,4 +71,9 @@ spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).
 
     ```bash
     tap-tableau --config config.json --catalog catalog.json
+    ```
+    To include a state file:
+    ```bash
+    tap-tableau --config config.json --catalog catalog.json > state.json
+    tail -1 state.json > state.json.tmp && mv state.json.tmp state.json
     ```
