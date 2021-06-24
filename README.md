@@ -1,8 +1,7 @@
 # tap-tableau
 
 This is a [Singer](https://singer.io) tap that produces JSON-formatted data from the [Tableau REST API](https://help.tableau.com/current/api/rest_api/en-us/REST/rest_api_ref.htm) following the [Singer
-spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).  
-Although it currently relies on this API, the intention will be to move over to the [Metadata API](https://help.tableau.com/current/api/metadata_api/en-us/index.html).  
+spec](https://github.com/singer-io/getting-started/blob/master/SPEC.md).    
 
 | Stream | Replication Key | Replication Strategy |
 |:---:|:---:|:---:|
