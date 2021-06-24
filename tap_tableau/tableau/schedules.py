@@ -17,15 +17,13 @@ def get_schedule_details(schedule):
     }
 
 
-def get_all_schedules(server):
-    all_schedules, _ = server.schedules.get()
+def get_all_schedules(server_client):
+    all_schedules, _ = server_client.schedules.get()
     return all_schedules
 
 
-def get_all_schedule_details(server, authentication):
-    if not server.is_signed_in():
-        server.auth.sign_in(authentication)
-    all_schedules = get_all_schedules(server=server)
+def get_all_schedule_details(server_client):
+    all_schedules = get_all_schedules(server_client=server_client)
     schedules = []
     for schedule in all_schedules:
         schedules.append(get_schedule_details(schedule=schedule))

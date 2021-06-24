@@ -16,7 +16,81 @@
         "array"
       ],
       "items": {
-
+        "type": [
+                  "null",
+                  "object"
+                ],
+        "properties": {
+                  "capabilities": {
+                    "type": [
+                      "null",
+                      "object"
+                    ],
+                    "properties": {
+                      "ChangeHierarchy": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "ChangePermissions": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Delete": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Execute": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "ExportXml": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Read": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Write": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      }
+                    }
+                  },
+                  "grantee_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "grantee_tag_name": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
+                }
       }
     },
     "default_flow_permissions": {
@@ -25,42 +99,81 @@
         "array"
       ],
       "items": {
+        "type": [
+                  "null",
+                  "object"
+                ],
         "properties": {
-          "capabilities": {
-            "type": [
-              "null",
-              "array"
-            ],
-            "items": {
-              "properties": {
-                "Read": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
-                },
-                "Write": {
-                  "type": [
-                    "null",
-                    "string"
-                  ]
+                  "capabilities": {
+                    "type": [
+                      "null",
+                      "object"
+                    ],
+                    "properties": {
+                      "ChangeHierarchy": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "ChangePermissions": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Delete": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Execute": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "ExportXml": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Read": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Write": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      }
+                    }
+                  },
+                  "grantee_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "grantee_tag_name": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
                 }
-              }
-            }
-          },
-          "grantee_id": {
-            "type": [
-              "null",
-              "string"
-            ]
-          },
-          "grantee_tag_name": {
-            "type": [
-              "null",
-              "string"
-            ]
-          }
-        }
       }
     },
     "default_workbook_permissions": {
@@ -69,7 +182,81 @@
         "array"
       ],
       "items": {
-
+        "type": [
+                  "null",
+                  "object"
+                ],
+        "properties": {
+                  "capabilities": {
+                    "type": [
+                      "null",
+                      "object"
+                    ],
+                    "properties": {
+                      "ChangeHierarchy": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "ChangePermissions": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Delete": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Execute": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "ExportXml": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Read": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      },
+                      "Write": {
+                        "type": [
+                          "null",
+                          "string"
+                        ],
+                        "required": false
+                      }
+                    }
+                  },
+                  "grantee_id": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  },
+                  "grantee_tag_name": {
+                    "type": [
+                      "null",
+                      "string"
+                    ]
+                  }
+                }
       }
     },
     "description": {

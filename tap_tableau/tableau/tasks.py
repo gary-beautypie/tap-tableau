@@ -20,15 +20,13 @@ def get_task_details(task):
     }
 
 
-def get_all_tasks(server):
-    all_tasks, _ = server.tasks.get()
+def get_all_tasks(server_client):
+    all_tasks, _ = server_client.tasks.get()
     return all_tasks
 
 
-def get_all_task_details(server, authentication):
-    if not server.is_signed_in():
-        server.auth.sign_in(authentication)
-    all_tasks = get_all_tasks(server=server)
+def get_all_task_details(server_client):
+    all_tasks = get_all_tasks(server_client=server_client)
     tasks = []
     for task in all_tasks:
         tasks.append(get_task_details(task=task))

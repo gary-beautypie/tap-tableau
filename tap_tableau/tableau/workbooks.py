@@ -41,34 +41,31 @@ def get_workbook_details(workbook):
         'project_name': workbook.project_name,
         'show_tabs': workbook.show_tabs,
         'size': workbook.size,
-        'tags': [tag for tag in workbook.tags],
+        'tags': list(workbook.tags),
         'updated_at': format_datetime(workbook.updated_at),
         # 'views': workbook.views,
         'webpage_url': workbook.webpage_url
     }
 
 
-def get_all_workbooks(server, start_date):
-    filter = get_start_date_filter(start_date=start_date)
-    all_workbooks, _ = server.workbooks.get(filter)
+def get_all_workbooks(server_client, start_date):
+    start_date_filter = get_start_date_filter(start_date=start_date)
+    all_workbooks, _ = server_client.workbooks.get(start_date_filter)
     for workbook in all_workbooks:
-        server.workbooks.populate_connections(workbook)
-        server.workbooks.populate_permissions(workbook)
-        server.workbooks.populate_views(workbook)
+        server_client.workbooks.populate_connections(workbook)
+        server_client.workbooks.populate_permissions(workbook)
+        server_client.workbooks.populate_views(workbook)
     return all_workbooks
 
 
-def get_all_workbook_details(server, authentication, start_date):
+def get_all_workbook_details(server_client, start_date):
     workbooks = []
     connections = []
-    if not server.is_signed_in():
-        server.auth.sign_in(authentication)
-    all_workbooks = get_all_workbooks(server=server, start_date=start_date)
+    all_workbooks = get_all_workbooks(server_client=server_client, start_date=start_date)
     for workbook in all_workbooks:
         workbooks.append(get_workbook_details(workbook=workbook))
         for connection in workbook.connections:
             connections.append(get_connection_details(connection=connection))
-    server.auth.sign_out()
     return {
         'workbooks': workbooks,
         'connections': connections,
